@@ -1,0 +1,30 @@
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka
+       
+spring:
+   application:
+      name: gateway              
+          
+server:
+  port: 8080
+ribbon:
+   ReadTimeout: 60000
+   connection-timeout: 3000
+   eureka:
+      enabled: true
+zuul:
+  prefix: /api
+  routes:
+    service2:
+      path: /service2/**
+      serviceId: SERVICE2  
+    service3:
+      path: /service3/**
+      serviceId: SERVICE3
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream    
