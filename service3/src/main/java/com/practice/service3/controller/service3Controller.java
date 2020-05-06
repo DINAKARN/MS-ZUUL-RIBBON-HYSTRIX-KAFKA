@@ -23,13 +23,13 @@ public class service3Controller {
 	@HystrixCommand(fallbackMethod = "returnfallback")
 	@GetMapping("/fallback")
 	public String retrunMessage() {
-		return restTemplate.getForObject("http://SERVICE2/service2/hello", String.class);
+		return restTemplate.getForObject("http://SERVICE2/hello", String.class);
 	}
 	public String returnfallback() {
 		return "Servie 2 is Down fallback Service2";
 	}
-	@GetMapping("/service3/hello")
+	@GetMapping("/hello")
 	public String returnvValue() {
-		return "Service3";
+		return "Service3 is working Fine";
 	}
 }
